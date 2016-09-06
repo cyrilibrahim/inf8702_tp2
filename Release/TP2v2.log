@@ -1,0 +1,43 @@
+﻿Build started 2016-05-18 4:18:02 PM.
+     1>Project "D:\Poly\Maitrise\INF8702-ChargeLabo\A2016\TP_Base\TP2v2.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iglew\include /Iglut\include /Zi /nologo /W3 /WX- /O2 /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Carte.cpp Cst.cpp Gazon.cpp Lumiere.cpp main.cpp Materiau.cpp Modele3DAbstrait.cpp NuanceurProg.cpp Skybox.cpp SurfaceBSplinaire.cpp Texture2D.cpp TextureAbstraite.cpp TextureCubemap.cpp Var.cpp noise.cpp textfile.cpp
+         Carte.cpp
+     1>d:\poly\maitrise\inf8702-chargelabo\a2016\tp_base\Var.h(12): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
+         Cst.cpp
+         Gazon.cpp
+     1>d:\poly\maitrise\inf8702-chargelabo\a2016\tp_base\Var.h(12): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
+         Lumiere.cpp
+     1>d:\poly\maitrise\inf8702-chargelabo\a2016\tp_base\Lumiere.h(11): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
+         main.cpp
+     1>main.cpp(16): fatal error C1083: Cannot open include file: 'GLFW/glfw3.h': No such file or directory
+         Materiau.cpp
+     1>d:\poly\maitrise\inf8702-chargelabo\a2016\tp_base\Materiau.h(11): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
+         Modele3DAbstrait.cpp
+     1>d:\poly\maitrise\inf8702-chargelabo\a2016\tp_base\Var.h(12): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
+         NuanceurProg.cpp
+         Skybox.cpp
+     1>d:\poly\maitrise\inf8702-chargelabo\a2016\tp_base\Var.h(12): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
+         SurfaceBSplinaire.cpp
+     1>d:\poly\maitrise\inf8702-chargelabo\a2016\tp_base\SurfaceBSplinaire.h(15): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
+         Texture2D.cpp
+     1>d:\poly\maitrise\inf8702-chargelabo\a2016\tp_base\Var.h(12): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
+         TextureAbstraite.cpp
+     1>d:\poly\maitrise\inf8702-chargelabo\a2016\tp_base\Var.h(12): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
+         TextureCubemap.cpp
+     1>d:\poly\maitrise\inf8702-chargelabo\a2016\tp_base\Var.h(12): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
+         Var.cpp
+     1>d:\poly\maitrise\inf8702-chargelabo\a2016\tp_base\Var.h(12): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
+         noise.cpp
+     1>noise.cpp(400): warning C4305: '=' : truncation from 'double' to 'float'
+     1>noise.cpp(406): warning C4305: '=' : truncation from 'double' to 'float'
+         textfile.cpp
+     1>textfile.cpp(27): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(211) : see declaration of 'fopen'
+     1>textfile.cpp(52): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(211) : see declaration of 'fopen'
+     1>Done Building Project "D:\Poly\Maitrise\INF8702-ChargeLabo\A2016\TP_Base\TP2v2.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.70

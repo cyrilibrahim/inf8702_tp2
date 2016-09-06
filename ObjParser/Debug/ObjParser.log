@@ -1,0 +1,13 @@
+﻿  Vecteur3.cpp
+  StringUtils.cpp
+  ParserTextAbstrait.cpp
+  OBJParser.cpp
+x:\bureau\infographie avancee\tp2\objparser\objparser.cpp(52): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(2254): note: voir la déclaration de 'sscanf'
+x:\bureau\infographie avancee\tp2\objparser\objparser.cpp(58): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(2254): note: voir la déclaration de 'sscanf'
+x:\bureau\infographie avancee\tp2\objparser\objparser.cpp(65): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(2254): note: voir la déclaration de 'sscanf'
+  Génération de code en cours...
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(1357,5): warning MSB8012: TargetPath(X:\Bureau\Infographie avancee\TP2\Debug\ObjParser.lib) does not match the Library's OutputFile property value (X:\Bureau\Infographie avancee\TP2\ObjParser\lib\ObjParser.lib). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+  ObjParser.vcxproj -> X:\Bureau\Infographie avancee\TP2\Debug\ObjParser.lib

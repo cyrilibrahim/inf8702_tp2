@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Utilitaires">
+      <UniqueIdentifier>{e0623153-ba0d-4d4e-bf2f-d9af19611a92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Utilitaires">
+      <UniqueIdentifier>{ff08c53e-b229-4ec8-a0b4-e218dba91a8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Nuanceurs">
+      <UniqueIdentifier>{f866e3f5-192e-4336-a17b-4df0f166b50c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nuanceurs\Fragments">
+      <UniqueIdentifier>{8beb2419-235b-4e68-b44c-67ec0567e6b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nuanceurs\Sommets">
+      <UniqueIdentifier>{8e43cadc-1997-4288-87ec-aa345986b480}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Cst.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lumiere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Materiau.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modele3DAbstrait.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NuanceurProg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureAbstraite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Var.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="noise.cpp">
+      <Filter>Source Files\Utilitaires</Filter>
+    </ClCompile>
+    <ClCompile Include="textfile.cpp">
+      <Filter>Source Files\Utilitaires</Filter>
+    </ClCompile>
+    <ClCompile Include="Modele3DOBJ.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrilleQuads.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCubemap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gazon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SurfaceBSplinaire.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lumiere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Materiau.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Modele3DAbstrait.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NuanceurProg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureAbstraite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Var.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="noise.h">
+      <Filter>Header Files\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Header Files\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="textfile.h">
+      <Filter>Header Files\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="Modele3DOBJ.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrilleQuads.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureCubemap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gazon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SurfaceBSplinaire.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Nuanceurs\carteFragments.glsl">
+      <Filter>Nuanceurs\Fragments</Filter>
+    </None>
+    <None Include="Nuanceurs\carteSommets.glsl">
+      <Filter>Nuanceurs\Sommets</Filter>
+    </None>
+    <None Include="Nuanceurs\gazonFragments.glsl">
+      <Filter>Nuanceurs\Fragments</Filter>
+    </None>
+    <None Include="Nuanceurs\skyBoxFragments.glsl">
+      <Filter>Nuanceurs\Fragments</Filter>
+    </None>
+    <None Include="Nuanceurs\gazonSommets.glsl">
+      <Filter>Nuanceurs\Sommets</Filter>
+    </None>
+    <None Include="Nuanceurs\skyBoxSommets.glsl">
+      <Filter>Nuanceurs\Sommets</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+﻿  main.cpp
+x:\bureau\infographie avancee\tp2\main.cpp(44): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
+x:\bureau\infographie avancee\tp2\main.cpp(45): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
+x:\bureau\infographie avancee\tp2\main.cpp(46): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
+x:\bureau\infographie avancee\tp2\main.cpp(229): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
+x:\bureau\infographie avancee\tp2\main.cpp(290): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+x:\bureau\infographie avancee\tp2\main.cpp(327): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+x:\bureau\infographie avancee\tp2\main.cpp(742): warning C4018: '<' : incompatibilité signed/unsigned
+x:\bureau\infographie avancee\tp2\main.cpp(831): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+x:\bureau\infographie avancee\tp2\main.cpp(832): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+  Modele3DOBJ.cpp
+  Génération de code en cours...
+Cst.obj : warning LNK4075: ' /EDITANDCONTINUE' ignoré à cause de la spécification '/SAFESEH'
+LINK : warning LNK4098: conflit entre la bibliothèque par défaut 'MSVCRT' et les autres bibliothèques ; utilisez /NODEFAULTLIB:library
+  TP2.vcxproj -> X:\Bureau\Infographie avancee\TP2\Debug\TP2.exe

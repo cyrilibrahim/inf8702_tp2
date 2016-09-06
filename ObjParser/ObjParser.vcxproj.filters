@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{5ed772af-b314-4a8e-beae-d92dfe39dbb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{93689846-82db-403f-af65-41fec944018a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parsers">
+      <UniqueIdentifier>{fd30779a-d708-4081-8813-8ab71bfb599d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{fb26699a-b1a7-4ceb-a5f1-d63adadd8f83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Math">
+      <UniqueIdentifier>{ce8fdeb4-6ab8-4181-ace7-9dcb46fbc5b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Geometry">
+      <UniqueIdentifier>{78ccabee-8a87-43d6-9302-5829251e3d44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Parsers">
+      <UniqueIdentifier>{e03ccf3b-1a6b-4296-9b4a-02e4125bc8d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="StringUtils.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Vecteur3.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJParser.cpp">
+      <Filter>Source Files\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="ParserTextAbstrait.cpp">
+      <Filter>Source Files\Parsers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StringUtils.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtils.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vecteur3.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJParser.h">
+      <Filter>Header Files\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="ParserTextAbstrait.h">
+      <Filter>Header Files\Parsers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

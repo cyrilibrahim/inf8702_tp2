@@ -1,0 +1,55 @@
+﻿Build started 2016-08-22 6:59:03 PM.
+     1>Project "H:\POLY\Maitrise\INF8702 - Charge de Lab\A2016\TP1\TP1_corrigé\TP1.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iglfw\include /Iglm\glm /Iglew\include /Ifreeglut\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_DEPRECATE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Cst.cpp GrilleQuads.cpp Lumiere.cpp main.cpp Materiau.cpp Modele3DAbstrait.cpp Modele3DOBJ.cpp NuanceurProg.cpp Texture2D.cpp TextureAbstraite.cpp TextureCubemap.cpp Var.cpp noise.cpp textfile.cpp
+         textfile.cpp
+         noise.cpp
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\noise.cpp(400): warning C4305: '=' : truncation from 'double' to 'float'
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\noise.cpp(406): warning C4305: '=' : truncation from 'double' to 'float'
+         Var.cpp
+         TextureCubemap.cpp
+         TextureAbstraite.cpp
+         Texture2D.cpp
+         NuanceurProg.cpp
+         Modele3DOBJ.cpp
+         Modele3DAbstrait.cpp
+         Materiau.cpp
+         main.cpp
+     1>c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: 'APIENTRY' : macro redefinition
+                 h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\glfw\include\glfw\glfw3.h(85) : see previous definition of 'APIENTRY'
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\main.cpp(378): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\main.cpp(652): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\main.cpp(653): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+         Lumiere.cpp
+         GrilleQuads.cpp
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\grillequads.cpp(20): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\grillequads.cpp(21): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\grillequads.cpp(26): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\grillequads.cpp(35): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\grillequads.cpp(36): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\grillequads.cpp(41): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\grillequads.cpp(116): warning C4018: '<' : signed/unsigned mismatch
+     1>h:\poly\maitrise\inf8702 - charge de lab\a2016\tp1\tp1_corrigé\grillequads.cpp(59): warning C4101: 'val' : unreferenced local variable
+         Cst.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"H:\POLY\Maitrise\INF8702 - Charge de Lab\A2016\TP1\TP1_corrigé\Debug\TP1.exe" /INCREMENTAL /NOLOGO /LIBPATH:"glfw\lib-vc2013" /LIBPATH:glew\lib /LIBPATH:freeglut\lib /LIBPATH:ObjParser\lib glfw3.lib glew32.lib ObjParser.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"H:\POLY\Maitrise\INF8702 - Charge de Lab\A2016\TP1\TP1_corrigé\Debug\TP1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"H:\POLY\Maitrise\INF8702 - Charge de Lab\A2016\TP1\TP1_corrigé\Debug\TP1.lib" /MACHINE:X86 /SAFESEH Debug\Cst.obj
+         Debug\GrilleQuads.obj
+         Debug\Lumiere.obj
+         Debug\main.obj
+         Debug\Materiau.obj
+         Debug\Modele3DAbstrait.obj
+         Debug\Modele3DOBJ.obj
+         Debug\NuanceurProg.obj
+         Debug\Texture2D.obj
+         Debug\TextureAbstraite.obj
+         Debug\TextureCubemap.obj
+         Debug\Var.obj
+         Debug\noise.obj
+         Debug\textfile.obj
+     1>LINK : fatal error LNK1104: cannot open file 'ObjParser.lib'
+     1>Done Building Project "H:\POLY\Maitrise\INF8702 - Charge de Lab\A2016\TP1\TP1_corrigé\TP1.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:07.12
