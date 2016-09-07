@@ -3,6 +3,7 @@
 
 #include "Vecteur3.h"
 #include <assert.h> 
+#include <cstring>
 
 using namespace Math3D;
 

@@ -8,7 +8,7 @@
 ///
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
-#include "modele3dabstrait.h"
+#include "Modele3DAbstrait.h"
 #include "SurfaceBSplinaire.h"
 #include "Cst.h"
 

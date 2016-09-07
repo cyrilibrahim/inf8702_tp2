@@ -8,7 +8,7 @@
 ///
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
-#include "textureAbstraite.h"
+#include "TextureAbstraite.h"
 
 // définition d'une macro utile pour la copie des sous-images
 // les parenthèses autour de (y) et (x) sont hyper importantes

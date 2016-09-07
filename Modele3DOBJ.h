@@ -8,12 +8,12 @@
 ///
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
-#include "modele3dabstrait.h"
+#include "Modele3DAbstrait.h"
 #include "Lumiere.h"
 #include "Cst.h"
 #include "Texture2D.h"
-#include "Objparser/OBJParser.h"
-#include "Objparser/Geometry.h"
+#include "ObjParser/OBJParser.h"
+#include "ObjParser/Geometry.h"
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/matrix_inverse.hpp>
