@@ -4,6 +4,7 @@ struct Light
         vec3 Ambient; 
         vec3 Diffuse;
         vec3 Specular;
+	//Light position in camera space
         vec4 Position;  // Si .w = 1.0 -> Direction de lumiere directionelle.
         vec3 SpotDir;
         float SpotExp;
@@ -51,23 +52,23 @@ void pointLight(in vec3 lightVect, in vec3 normal)
    vec3  VP;           // Vecteur lumière
 
    // Calculer vecteur lumière
-   // VP = ...
+   VP = lightVect;
 
    // Calculer distance à la lumière
-   // d = ...
+   d = length(VP);
 
    // Normaliser VP
-   // VP = ..
+   VP = normalize(VP);
 
    // Calculer l'atténuation due à la distance
-   //attenuation = ...
+   vec3 vAtt = Lights[0].Attenuation;
+   attenuation = 1/(vAtt[0] + vAtt[1]*d + vAtt[2]*d*d);
    
-   
-   // nDotVP = ...
+   nDotVP = clamp(dot(normal,VP),0,1);
 
    // Calculer les contributions ambiantes et diffuses
-   // Ambient  += ...
-   // Diffuse  += ...
+   Ambient  += attenuation * vec4(Lights[0].Ambient,1);
+   Diffuse  += attenuation * vec4(Lights[0].Diffuse,1) * nDotVP;
 }
 
 
@@ -77,11 +78,13 @@ void directionalLight(in vec3 lightVect, in vec3 normal)
    vec3  VP;             // Vecteur lumière
    float nDotVP;         // Produit scalaire entre VP et la normale
 
-   //nDotVP = ...
+   VP = normalize(lightVect);
+
+   nDotVP = clamp(dot(normal,VP),0,1);
 
    // Calculer les contributions ambiantes et diffuses
-   // Ambient  += ...
-   // Diffuse  += ...
+   Ambient  += vec4(Lights[2].Ambient,1);
+   Diffuse  += vec4(Lights[2].Diffuse,1) * nDotVP;
 }
 
 
@@ -96,21 +99,22 @@ void spotLight(in vec3 lightVect, in vec3 normal)
    vec3  VP;                 // Vecteur lumière
 
    // Calculer le vecteur Lumière
-   // VP = ...
+   VP = lightVect;
 
    // Calculer la distance à al lumière
-   // d = ...
+   d = length(VP);
 
    // Normaliser VP
-   // ...
+   VP = normalize(VP);
 
    // Calculer l'atténuation due à la distance
-   // ...
+   vec3 vAtt = Lights[1].Attenuation;
+   attenuation = 1/(vAtt[0] + vAtt[1]*d + vAtt[2]*d*d);
 
    // Le fragment est-il à l'intérieur du cône de lumière ?
-   // vec3 spotDir = ...
-   // vec3 lightDir = ...
-   // angleEntreLumEtSpot = ...
+   vec3 spotDir = Lights[1].SpotDir;
+   vec3 lightDir = -VP;
+   angleEntreLumEtSpot = degrees(acos(dot(spotDir,lightDir)));
 
    if (angleEntreLumEtSpot > Lights[1].SpotCutoff)
    {
@@ -118,18 +122,18 @@ void spotLight(in vec3 lightVect, in vec3 normal)
    }
    else
    {
-       //spotAttenuation = ...
+       spotAttenuation = pow(dot(spotDir,lightDir),Lights[1].SpotExp);
 
    }
 
    // Combine les atténuation du spot et de la distance
    attenuation *= spotAttenuation;
 
-   // nDotVP = ...
+   nDotVP = clamp(dot(VP,normal),0,1);
 
    // Calculer les contributions ambiantes et diffuses
-   // Ambient  += ...
-   // Diffuse  += ..
+   Ambient  += attenuation * vec4(Lights[1].Ambient,1) ;
+   Diffuse  += attenuation * vec4(Lights[1].Diffuse,1) * nDotVP;
 }
 
 vec4 flight(in vec3 light0Vect, in vec3 light1Vect, in vec3 light2Vect, in vec3 normal)
@@ -152,11 +156,11 @@ vec4 flight(in vec3 light0Vect, in vec3 light1Vect, in vec3 light2Vect, in vec3 
     }
     
     //À dé-commenter!
-    // color = (Ambient * Material.Ambient + Diffuse  * Material.Diffuse);
-    // color = clamp( color, 0.0, 1.0 );
+    color = (Ambient * Material.Ambient + Diffuse  * Material.Diffuse);
+    color = clamp( color, 0.0, 1.0 );
     
     // À supprimer !
-    color = vec4(0.0, 1.0, 0.0, 1.0);
+    //color = vec4(0.0, 1.0, 0.0, 1.0);
     
     return color;
 }
@@ -170,14 +174,14 @@ void main (void)
     vec3 normal_cameraSpace;
     
     // Transformation de la position
-    gl_Position = MVP * vec4(vp,1.0);
+    //gl_Position = MVP * vec4(vp,1.0);
     vec4 csPosition = MV * vec4 (vp, 1.0);
     csPosition3 = (csPosition.xyz);
     
     //Vecteurs de la surface vers la lumière
-    //light0Vect = ...
-    //light1Vect = ...
-    //light2Vect = ...
+    light0Vect = Lights[0].Position.xyz - csPosition3;
+    light1Vect = Lights[1].Position.xyz - csPosition3;
+    light2Vect = -Lights[2].Position.xyz;
 
     //Normale en référentiel caméra:
     normal_cameraSpace = normalize(MV_N * vn);
