@@ -33,7 +33,7 @@ void main (void)
     out_color = fragColor;
     
     //Contribution de la texture:
-    // ...
+    out_color *= texture(colorMap, fragTexCoord);
     
     color = clamp(out_color, 0.0, 1.0);
     
