@@ -516,7 +516,8 @@ void dessinerSkybox()
 	glm::mat4 modelMatrix = translationMatrix * rotationMatrix * scalingMatrix;
 
 	// Matrice Model-Vue-Projection:
-	glm::mat4 mvp = CVar::projection * CVar::vue * modelMatrix;
+	glm::mat4 vue_skybox = glm::mat4(glm::mat3(CVar::vue));
+	glm::mat4 mvp = CVar::projection * vue_skybox * modelMatrix;
 
 	GLuint handle;
 
