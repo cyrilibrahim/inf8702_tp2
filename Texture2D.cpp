@@ -99,6 +99,7 @@ void CTexture2D::chargerTexture()
          } else {
 			 // À modifier pour la construction de mipmaps
 			 glTexImage2D(GL_TEXTURE_2D, 0, 3, TextureImage.tailleX, TextureImage.tailleY, 0, GL_RGB, GL_UNSIGNED_BYTE, TextureImage.data);
+			 glGenerateMipmap(GL_TEXTURE_2D);
          }
 
          // libérer l'espace mémoire maintenant que la texture est copiée dans la mémoire vidéo
@@ -114,6 +115,7 @@ void CTexture2D::chargerTexture()
       } else {
 		  //À modifier pour la construction de mipmaps
 		  glTexImage2D(GL_TEXTURE_2D, 0, 3, TextureImage.tailleX, TextureImage.tailleY, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+		  glGenerateMipmap(GL_TEXTURE_2D);
       }
    }
 }
