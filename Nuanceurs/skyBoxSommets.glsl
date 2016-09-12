@@ -4,7 +4,7 @@ layout(location = 1) in vec3 vn;
 
 uniform samplerCube colorMap;
 uniform mat4 MVP;
-out vec3 fragTexCoord;
+out vec3 fragTexCoords;
 
 void main (void)
 {
@@ -12,5 +12,5 @@ void main (void)
     // effectuons la base : la transformation du vertex
     gl_Position = (MVP * vec4(vp, 1.0));
     
-    // ...
+    fragTexCoords= vp;
 }

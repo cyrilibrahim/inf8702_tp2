@@ -534,7 +534,7 @@ void dessinerScene()
 
 	
 	// Décommenter pour afficher!
-	// dessinerSkybox();
+	dessinerSkybox();
 
 	dessinerGazon();
 
