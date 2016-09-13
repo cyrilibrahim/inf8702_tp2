@@ -8,7 +8,7 @@ struct Light
         vec3 SpotDir;
         float SpotExp;
         float SpotCutoff;
-		float SpotCutoffCos;
+	float SpotCutoffCos;
         vec3 Attenuation; //Constante, Lineraire, Quadratique
 };
 
@@ -266,7 +266,7 @@ void main () {
    vec3 Tangent_cameraSpace; 
 
    // Pasage des coordonées des textures
-   // fragTexCoord = ...
+   fragTexCoord = vt;
    
    // Transformation du vertex selon le temps
    // if (animOn == 1) {

@@ -71,7 +71,7 @@ void main (void)
     {	
         frontColor = frontFragColor;
         // Sampling de la texture
-        // ...
+	frontColor *= texture(frontColorMap,fragTexCoord);
         
         // Propriétés de la surface
         matSpecular  = frontMat.Specular;
@@ -95,7 +95,8 @@ void main (void)
     {
         backColor = backFragColor;
         // Sampling de la texture
-        // ...
+	// L'image est inversée après rotation autour de y
+	backColor *= texture(backColorMap,vec2(1.0-fragTexCoord.x,fragTexCoord.y));
 
         // Propriétés de la surface
         matSpecular  = backMat.Specular;
