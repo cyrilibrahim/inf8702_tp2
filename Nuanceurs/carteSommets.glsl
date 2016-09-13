@@ -62,7 +62,14 @@ const float PI_INV = 1.0 / PI;        // Pi inversé
 // Calcul pour une lumière ponctuelle
 void pointLight(in int i, in vec3 normal, in vec3 eye, in vec3 csPosition3)
 {
-   // À compléter, inspirez vous du gazon!
+	Light l= Lights[i];
+	vec3 VP = l.Position.xyz - csPosition3;
+	float d= length(VP);
+	float att = 1/(l.Attenuation[0] + l.Attenuation[1]*d + l.Attenuation[2]*d*d);
+	float nDotVP = clamp(dot(normal,normalize(VP)),0,1);
+
+	Ambient.rgb += l.Ambient * att;
+	Diffuse.rgb += l.Diffuse * att * nDotVP;
 }
 
 
@@ -90,10 +97,10 @@ void frontLighting(in vec3 normal, in vec3 csPosition)
    Diffuse  = vec4 (0.0, 0.0, 0.0, 1.0);
 
    // Calcul des 3 lumières
-   // if (pointLightOn == 1) {
-   //    pointLight(0, normal, eye, csPosition);
-   // }
-   // 
+   if (pointLightOn == 1) {
+      pointLight(0, normal, eye, csPosition);
+   }
+   
    // if (dirLightOn == 1) {
    //      directionalLight(2, normal);
    // }
@@ -119,10 +126,10 @@ void backLighting(in vec3 invNormal, in vec3 csPosition)
    Diffuse  = vec4 (0.0);
 
    // Calcul des 3 lumières
-   // if (pointLightOn == 1) {
-   //   pointLight(0, invNormal, eye, csPosition);
-   // }
-   //
+   if (pointLightOn == 1) {
+     pointLight(0, invNormal, eye, csPosition);
+   }
+   
    // if (dirLightOn == 1) {
    //   directionalLight(2, invNormal);
    // }
