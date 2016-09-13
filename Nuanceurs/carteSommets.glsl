@@ -8,6 +8,7 @@ struct Light
         vec3 SpotDir;
         float SpotExp;
         float SpotCutoff;
+		float SpotCutoffCos;
         vec3 Attenuation; //Constante, Lineraire, Quadratique
 };
 
@@ -76,7 +77,19 @@ void pointLight(in int i, in vec3 normal, in vec3 eye, in vec3 csPosition3)
 // Calcul pour une lumière "spot"
 void spotLight(in int i, in vec3 normal, in vec3 eye, in vec3 csPosition3)
 {
-    // À compléter, inspirez vous du gazon!
+	Light l = Lights[i];
+	vec3 VP = l.Position.xyz - csPosition3;
+	float d = length(VP);
+	float att = 1/(l.Attenuation[0] + l.Attenuation[1]*d + l.Attenuation[2]*d*d);
+	VP = normalize(VP);
+	float nDotVP = clamp(dot(normal,VP),0,1);
+
+	float rDotVP = dot(-VP,l.SpotDir);
+	if (rDotVP > l.SpotCutoffCos) {
+		att *= pow(rDotVP,l.SpotExp);
+		Ambient.rgb += l.Ambient * att;
+		Diffuse.rgb += l.Diffuse * att * nDotVP;
+	}
 }
 
 
@@ -110,9 +123,9 @@ void frontLighting(in vec3 normal, in vec3 csPosition)
         directionalLight(2, normal);
    }
    
-   // if (spotLightOn == 1) {
-   //    spotLight(1, normal, eye, csPosition);
-   // }
+   if (spotLightOn == 1) {
+      spotLight(1, normal, eye, csPosition);
+   }
 
    color = Ambient  * frontMat.Ambient + Diffuse  * frontMat.Diffuse;
    color = clamp( color, 0.0, 1.0 );
@@ -139,9 +152,9 @@ void backLighting(in vec3 invNormal, in vec3 csPosition)
      directionalLight(2, invNormal);
    }
    
-   // if (spotLightOn == 1) {
-   //    spotLight(1, invNormal, eye, csPosition);
-   // }
+   if (spotLightOn == 1) {
+      spotLight(1, invNormal, eye, csPosition);
+   }
 
    color = Ambient  * backMat.Ambient + Diffuse * backMat.Diffuse;
    color = clamp( color, 0.0, 1.0 );
@@ -243,6 +256,7 @@ float ffog(in float distance_cameraSpace)
    return(abs(distance_cameraSpace));
 }
 
+
 void main () {
 
    // Variables qui seront transformées par l'animation
@@ -250,7 +264,7 @@ void main () {
    vec3 normal = vn;
    vec3 tangent = Tangent;
    vec3 Tangent_cameraSpace; 
-  
+
    // Pasage des coordonées des textures
    // fragTexCoord = ...
    
