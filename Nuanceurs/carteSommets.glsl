@@ -83,7 +83,12 @@ void spotLight(in int i, in vec3 normal, in vec3 eye, in vec3 csPosition3)
 // Calcul pour une lumière directionnelle
 void directionalLight(in int i, in vec3 normal)
 {
-   // À compléter, inspirez vous du gazon!
+	Light l = Lights[i];
+	vec3 VP = normalize(-l.Position.xyz);
+	float nDotVP = clamp(dot(normal,VP),0,1);
+
+	Ambient.rgb += l.Ambient;
+	Diffuse.rgb += l.Diffuse * nDotVP;
 }
 
 // éclairage pour la surface du dessus
@@ -101,10 +106,10 @@ void frontLighting(in vec3 normal, in vec3 csPosition)
       pointLight(0, normal, eye, csPosition);
    }
    
-   // if (dirLightOn == 1) {
-   //      directionalLight(2, normal);
-   // }
-   // 
+   if (dirLightOn == 1) {
+        directionalLight(2, normal);
+   }
+   
    // if (spotLightOn == 1) {
    //    spotLight(1, normal, eye, csPosition);
    // }
@@ -130,10 +135,10 @@ void backLighting(in vec3 invNormal, in vec3 csPosition)
      pointLight(0, invNormal, eye, csPosition);
    }
    
-   // if (dirLightOn == 1) {
-   //   directionalLight(2, invNormal);
-   // }
-   //
+   if (dirLightOn == 1) {
+     directionalLight(2, invNormal);
+   }
+   
    // if (spotLightOn == 1) {
    //    spotLight(1, invNormal, eye, csPosition);
    // }
