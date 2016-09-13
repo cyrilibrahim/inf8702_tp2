@@ -109,13 +109,13 @@ void main (void)
     vec4 specular = vec4(0.0, 0.0, 0.0, 1.0);
 
     if (pointLightOn == 1) {
-        specular +=  lightSpec(0, normal, Light0HV, 400.0);
+        specular +=  lightSpec(0, normal, Light0HV, matShininess);
     }
     if (dirLightOn == 1) {
-        specular +=  lightSpec(2, normal, Light2HV, 100.0);
+        specular +=  lightSpec(2, normal, Light2HV, matShininess);
     }
     if (spotLightOn == 1) {
-        specular +=  lightSpec(1, normal, Light1HV, 400.0);
+        specular +=  lightSpec(1, normal, Light1HV, matShininess);
     }
     
     // Ajout de la contribution spéculaire au fragement
