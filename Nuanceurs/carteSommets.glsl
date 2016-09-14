@@ -8,7 +8,7 @@ struct Light
         vec3 SpotDir;
         float SpotExp;
         float SpotCutoff;
-	float SpotCutoffCos;
+		float SpotCutoffCos;
         vec3 Attenuation; //Constante, Lineraire, Quadratique
 };
 
@@ -63,45 +63,45 @@ const float PI_INV = 1.0 / PI;        // Pi inversé
 // Calcul pour une lumière ponctuelle
 void pointLight(in int i, in vec3 normal, in vec3 eye, in vec3 csPosition3)
 {
-	Light l= Lights[i];
-	vec3 VP = l.Position.xyz - csPosition3;
-	float d= length(VP);
-	float att = 1/(l.Attenuation[0] + l.Attenuation[1]*d + l.Attenuation[2]*d*d);
-	float nDotVP = clamp(dot(normal,normalize(VP)),0,1);
+		Light l= Lights[i];
+		vec3 VP = l.Position.xyz - csPosition3;
+		float d= length(VP);
+		float att = 1/(l.Attenuation[0] + l.Attenuation[1]*d + l.Attenuation[2]*d*d);
+		float nDotVP = clamp(dot(normal,normalize(VP)),0,1);
 
-	Ambient.rgb += l.Ambient * att;
-	Diffuse.rgb += l.Diffuse * att * nDotVP;
+		Ambient.rgb += l.Ambient * att;
+		Diffuse.rgb += l.Diffuse * att * nDotVP;
 }
 
 
 // Calcul pour une lumière "spot"
 void spotLight(in int i, in vec3 normal, in vec3 eye, in vec3 csPosition3)
 {
-	Light l = Lights[i];
-	vec3 VP = l.Position.xyz - csPosition3;
-	float d = length(VP);
-	float att = 1/(l.Attenuation[0] + l.Attenuation[1]*d + l.Attenuation[2]*d*d);
-	VP = normalize(VP);
-	float nDotVP = clamp(dot(normal,VP),0,1);
+		Light l = Lights[i];
+		vec3 VP = l.Position.xyz - csPosition3;
+		float d = length(VP);
+		float att = 1/(l.Attenuation[0] + l.Attenuation[1]*d + l.Attenuation[2]*d*d);
+		VP = normalize(VP);
+		float nDotVP = clamp(dot(normal,VP),0,1);
 
-	float rDotVP = dot(-VP,l.SpotDir);
-	if (rDotVP > l.SpotCutoffCos) {
-		att *= pow(rDotVP,l.SpotExp);
-		Ambient.rgb += l.Ambient * att;
-		Diffuse.rgb += l.Diffuse * att * nDotVP;
-	}
+		float rDotVP = dot(-VP,l.SpotDir);
+		if (rDotVP > l.SpotCutoffCos) {
+				att *= pow(rDotVP,l.SpotExp);
+				Ambient.rgb += l.Ambient * att;
+				Diffuse.rgb += l.Diffuse * att * nDotVP;
+		}
 }
 
 
 // Calcul pour une lumière directionnelle
 void directionalLight(in int i, in vec3 normal)
 {
-	Light l = Lights[i];
-	vec3 VP = normalize(-l.Position.xyz);
-	float nDotVP = clamp(dot(normal,VP),0,1);
+		Light l = Lights[i];
+		vec3 VP = normalize(-l.Position.xyz);
+		float nDotVP = clamp(dot(normal,VP),0,1);
 
-	Ambient.rgb += l.Ambient;
-	Diffuse.rgb += l.Diffuse * nDotVP;
+		Ambient.rgb += l.Ambient;
+		Diffuse.rgb += l.Diffuse * nDotVP;
 }
 
 // éclairage pour la surface du dessus
@@ -194,34 +194,26 @@ void animation(inout vec4 position, inout vec3 normal, inout vec3 tangent)
 	float deltaPos;    // Variation de la hauteur du vertex
 	mat3 rotMat;     // Matrice de tranformation pour la normale et tangente
 	float theta;	 // Angle pour calculer la normale et la tangente
-	
+
 	amplitude = 2.0 * sin(time);
 	// Déformation selon l'amplitude (time)
-    if(amplitude < 0.0) {
-        // Déformation sur l'axe des X selon la position X
-		// TODO: 
-		// Remplacer le commentaire ci-bas par la valeur de position necessaire
-        deltaPos = amplitude * sin(/*position X * */ PI);
+	if(amplitude < 0.0) {
+		// Déformation sur l'axe des X selon la position X
+		deltaPos = amplitude * sin(vt.x*PI);
 		theta = 0.5 * (vt.x - 0.5) * PI * sin(-amplitude);
-		 // TODO:
-		 //rotMat= ...
-    } else {
-        // Déformation sur l'axe des Y, selon la position Y
-		// TODO: 
-		// Remplacer le commentaire ci-bas par la valeur de position necessaire
-        deltaPos = amplitude * sin(/*position Y * */ PI);
+		rotMat= rotMatY(theta);
+	} else {
+		// Déformation sur l'axe des Y, selon la position Y
+		deltaPos = amplitude * sin(vt.y*PI);
 		float theta = 0.5 * (vt.y - 0.5) * PI * sin(amplitude);
-		 // TODO:
-		//rotMat = ...
-    }
-    // TODO:
-    // Obtenir le déplacement du sommets en cours
-    // position = ..
+		rotMat = rotMatX(theta);
+	}
+	// Obtenir le déplacement du sommets en cours
+	position.z += deltaPos;
 
-    // TODO:
-    // Trouver les nouvelles normale + tangente après déplacement du sommet
-    // normal = ...
-    // tangent = ...
+	// Trouver les nouvelles normale + tangente après déplacement du sommet
+	normal = rotMat * normal;
+	tangent = rotMat * tangent;
 }
 
 // Transformation des coordonnées d'espace tangent
@@ -269,9 +261,9 @@ void main () {
    fragTexCoord = vt;
    
    // Transformation du vertex selon le temps
-   // if (animOn == 1) {
-   //   animate(position, normal, tangent);
-   // }
+   if (animOn == 1) {
+     animation(position, normal, tangent);
+   }
    
     //On passe au référenciel de caméra (ou eye-coordinate)
     VertexPosition_cameraSpace = ( V * M * position).xyz;
