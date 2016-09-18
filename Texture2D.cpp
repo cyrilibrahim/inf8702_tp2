@@ -50,8 +50,13 @@ CTextureAbstraite(GL_TEXTURE_2D, mipmap)
    if (!mipmap_) {
    glTexImage2D(GL_TEXTURE_2D, 0, 3, largeur, hauteur, 0, GL_RGB, GL_FLOAT, data);
    } else {
-	   // À modifier pour la construction de mipmaps
 	   glTexImage2D(GL_TEXTURE_2D, 0, 3, largeur, hauteur, 0, GL_RGB, GL_FLOAT, data);
+	   //Minification: filtrage linéaire entre les 2 mipmaps les plus proches ET filtrage linéaire pour les pixels de chaque mipmap
+	   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	   //Magnification: filtrage linéaire pour les pixels de la texture utilisée (pas de mipaps en magnification)
+	   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	   //Générer les mipmaps
+	   glGenerateMipmap(GL_TEXTURE_2D);
    }
 
    // libérer l'espace mémoire maintenant que la texture est copiée dans la mémoire vidéo
@@ -97,8 +102,12 @@ void CTexture2D::chargerTexture()
          if (!mipmap_) {
             glTexImage2D(GL_TEXTURE_2D, 0, 3, TextureImage.tailleX, TextureImage.tailleY, 0, GL_RGB, GL_UNSIGNED_BYTE, TextureImage.data);
          } else {
-			 // À modifier pour la construction de mipmaps
 			 glTexImage2D(GL_TEXTURE_2D, 0, 3, TextureImage.tailleX, TextureImage.tailleY, 0, GL_RGB, GL_UNSIGNED_BYTE, TextureImage.data);
+			 //Minification: filtrage linéaire entre les 2 mipmaps les plus proches ET filtrage linéaire pour les pixels de chaque mipmap
+			 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+			 //Magnification: filtrage linéaire pour les pixels de la texture utilisée (pas de mipaps en magnification)
+			 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			 //Générer les mipmaps
 			 glGenerateMipmap(GL_TEXTURE_2D);
          }
 
@@ -115,6 +124,11 @@ void CTexture2D::chargerTexture()
       } else {
 		  //À modifier pour la construction de mipmaps
 		  glTexImage2D(GL_TEXTURE_2D, 0, 3, TextureImage.tailleX, TextureImage.tailleY, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+		  //Minification: filtrage linéaire entre les 2 mipmaps les plus proches ET filtrage linéaire pour les pixels de chaque mipmap
+		  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		  //Magnification: filtrage linéaire pour les pixels de la texture utilisée (pas de mipaps en magnification)
+		  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		  //Générer les mipmaps
 		  glGenerateMipmap(GL_TEXTURE_2D);
       }
    }
