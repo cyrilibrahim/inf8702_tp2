@@ -224,22 +224,24 @@ void tsTransform(in vec3 csNormal, vec3 csTangent, vec3 csPosition)
     // qui vous aidera à structurer votre solution.
 
     // Calcul de la binormale
-    // vec3 ecBinormal = ...
+    vec3 ecBinormal = cross(csNormal,csTangent);
 
     // Construction de la matrice de transformation pour passer en espace tangent
-    // mat3 tsMatrix = mat3(...);
+    mat3 tsMatrix = transpose(mat3(csTangent,ecBinormal,csNormal));
 
     // Construction et calcul des vecteurs pertinants
     // Nous sommes en coordonnées de visualisation
-    // vec3 EyeDir    = ... 
-    // Light0HV  = ... en fonction de EyeDir et ...
-    // Light1HV  = ... 
-    // Light2HV  = ... en fonction de EyeDir et ...
+    vec3 EyeDir    = normalize(-csPosition);
+    Light0HV  = normalize(Lights[0].Position.xyz - csPosition) + EyeDir;
+    Light1HV  = Lights[1].Position.xyz + EyeDir;
+    Light2HV  = normalize(Lights[2].Position.xyz - csPosition) + EyeDir;
 
     // Transformation dans l'espace tangent (on applique la matrice tsMatrix)
-    // Light0HV  = ...
-    // Light1HV  = ...
-    // Light2HV  = ...
+    // On normalise les halfvect au niveau des sommets, l'interpolation au
+    // niveau des fragments sera a peu près normalisée
+    Light0HV  = normalize(tsMatrix * Light0HV);
+    Light1HV  = normalize(tsMatrix * Light1HV);
+    Light2HV  = normalize(tsMatrix * Light2HV);
    
 }
 
