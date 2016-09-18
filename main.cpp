@@ -193,7 +193,7 @@ int main(int argc,char *argv[])
 		// Rafraichir le point de vue selon les input clavier et souris
 		rafraichirCamera(fenetre, deltaT);
 		
-		// Afficher nos modèlests
+		// Afficher nos modèles
 		dessinerScene();
 
 		// put the stuff we've been drawing onto the display
@@ -530,18 +530,16 @@ void dessinerSkybox()
 
 void dessinerScene()
 {
-	// À compléter
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	
-	// Décommenter pour afficher!
+	// On désactive le depth mask pour afficher la skybox à l'arrière plan de tous les autres objets de la scène
 	glDepthMask(GL_FALSE);
 	dessinerSkybox();
 	glDepthMask(GL_TRUE);
 
 	dessinerGazon();
 
-	// Décommenter pour afficher!
 	dessinerCarte();
 
 
