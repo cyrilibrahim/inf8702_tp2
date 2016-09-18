@@ -497,9 +497,7 @@ void dessinerGazon()
 
 void dessinerSkybox()
 {
-
 	// Ajouter une modification dans la matrice Modèle pour éliminer les artéfacts de perspectives.
-	// ...
 	progNuanceurSkybox.activer();
 
 	glm::vec3 s(CCst::grandeurSkybox, CCst::grandeurSkybox, CCst::grandeurSkybox);
@@ -511,13 +509,13 @@ void dessinerSkybox()
 	float a = glm::radians(-90.f);
 	rotationMatrix = glm::rotate(a, rotationAxis);
 
-	glm::mat4 translationMatrix = glm::translate(glm::vec3(0.0f,0.0f,0.0f));
+	// On centre la skybox à la position de la caméra pour éliminer les artéfacts de perspectives
+	glm::mat4 translationMatrix = glm::translate(cam_position);
 	
 	glm::mat4 modelMatrix = translationMatrix * rotationMatrix * scalingMatrix;
 
 	// Matrice Model-Vue-Projection:
-	glm::mat4 vue_skybox = glm::mat4(glm::mat3(CVar::vue));
-	glm::mat4 mvp = CVar::projection * vue_skybox * modelMatrix;
+	glm::mat4 mvp = CVar::projection * CVar::vue * modelMatrix;
 
 	GLuint handle;
 
