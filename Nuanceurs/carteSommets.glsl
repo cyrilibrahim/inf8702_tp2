@@ -223,12 +223,12 @@ void animation(inout vec4 position, inout vec3 normal, inout vec3 tangent)
 		// Déformation sur l'axe des X selon la position X
 		deltaPos = amplitude * sin(vt.x*PI);
 		theta = 0.5 * (vt.x - 0.5) * PI * sin(-amplitude);
-		rotMat= rotMatY(theta);
+		rotMat= rotMatY(-theta);
 	} else {
 		// Déformation sur l'axe des Y, selon la position Y
 		deltaPos = amplitude * sin(vt.y*PI);
-		float theta = 0.5 * (vt.y - 0.5) * PI * sin(amplitude);
-		rotMat = rotMatX(theta);
+		theta = 0.5 * (vt.y - 0.5) * PI * sin(amplitude);
+		rotMat = rotMatX(-theta);
 	}
 	// Obtenir le déplacement du sommets en cours
 	position.z += deltaPos;
@@ -241,11 +241,7 @@ void animation(inout vec4 position, inout vec3 normal, inout vec3 tangent)
 // Transformation des coordonnées d'espace tangent
 void tsTransform(in vec3 csNormal, vec3 csTangent, vec3 csPosition)
 {
-	// Complétez cette fonction.
-	// Vous trouverez ci-bas un genre de pseudo-code commenté 
-	// qui vous aidera à structurer votre solution.
-
-	// Calcul de la binormale
+	// Calcul de la binormale: produit vectoriel de la normale et la tangente
 	vec3 ecBinormal = cross(csNormal,csTangent);
 
 	// Construction de la matrice de transformation pour passer en espace tangent
@@ -254,8 +250,9 @@ void tsTransform(in vec3 csNormal, vec3 csTangent, vec3 csPosition)
 	// Construction et calcul des vecteurs pertinants
 	// Nous sommes en coordonnées de visualisation
 	vec3 EyeDir    = normalize(-csPosition);
+	// Half vector = VP + EyeDir (on normalise à la fin)
 	Light0HV  = normalize(Lights[0].Position.xyz - csPosition) + EyeDir;
-	Light1HV  = Lights[1].Position.xyz + EyeDir;
+	Light1HV  = normalize(Lights[1].Position.xyz) + EyeDir; //lumière directionnelle: direction = Position.xyz
 	Light2HV  = normalize(Lights[2].Position.xyz - csPosition) + EyeDir;
 
 	// Transformation dans l'espace tangent (on applique la matrice tsMatrix)
@@ -286,7 +283,7 @@ void main () {
 
 	// Transformation du vertex selon le temps
 	if (animOn == 1) {
-		//animation(position, normal, tangent);
+		animation(position, normal, tangent);
 	}
 
 	//On passe au référenciel de caméra (ou eye-coordinate)
@@ -302,6 +299,6 @@ void main () {
 	backLighting(-Normal_cameraSpace, VertexPosition_cameraSpace);
 
 	// Transformation des coordonées en espace tangent
-	//tsTransform(Normal_cameraSpace, Tangent_cameraSpace, VertexPosition_cameraSpace);
+	tsTransform(Normal_cameraSpace, Tangent_cameraSpace, VertexPosition_cameraSpace);
 
 }
