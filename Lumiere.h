@@ -59,7 +59,6 @@ public:
    inline void modifierSpotDir(GLfloat x, GLfloat y, GLfloat z);
    /// obtient le spotCutoff
    inline GLfloat obtenirSpotCutOff();
-   inline GLfloat obtenirSpotCutOffCos();
    /// obtient le spotExp
    inline GLfloat obtenirSpotExp();
    /// obtient le coefficient d'atténuation constante
@@ -106,8 +105,6 @@ private:
 
    /// l'angle de coupure du "spot" (le cas échéant, sinon = 180)
    GLfloat spotCutoff_;
-
-   GLfloat spotCutoffCos_;
 
    /// le coefficient d'atténuantion constante (n'est PAS spécifiable à la construction)
    GLfloat constAtt_;
@@ -397,11 +394,6 @@ inline void CLumiere::eteindre()
 inline GLfloat CLumiere::obtenirSpotCutOff()
 {
    return this->spotCutoff_;
-}
-
-inline GLfloat CLumiere::obtenirSpotCutOffCos()
-{
-   return this->spotCutoffCos_;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -793,8 +793,6 @@ void attribuerValeursLumieres(GLuint progNuanceur)
 
 		li_handle = glGetUniformLocation(progNuanceur, (light_desc + ".SpotCutoff").c_str());
 		glUniform1f(li_handle, CVar::lumieres[i]->obtenirSpotCutOff());
-		li_handle = glGetUniformLocation(progNuanceur, (light_desc + ".SpotCutoffCos").c_str());
-		glUniform1f(li_handle, CVar::lumieres[i]->obtenirSpotCutOffCos());
 
 		li_handle = glGetUniformLocation(progNuanceur, (light_desc + ".Attenuation").c_str());
 		glUniform3f(li_handle,

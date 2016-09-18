@@ -7,7 +7,6 @@
 ///
 ///////////////////////////////////////////////////////////////////////////////
 #include "Lumiere.h"
-#include <cmath>
 
 
 
@@ -53,7 +52,6 @@ CLumiere::CLumiere(void)
 
    spotExp_    = 0.0;
    spotCutoff_ = 180.0;
-   spotCutoffCos_ = -1;
 
    constAtt_ = 1.0;
    linAtt_   = 0.0;
@@ -126,7 +124,6 @@ CLumiere::CLumiere(GLfloat KAr, GLfloat KAg, GLfloat KAb, GLfloat KDr, GLfloat K
 
    spotExp_    = spotExp;
    spotCutoff_  = spotCutoff;
-   spotCutoffCos_ = cos(spotCutoff_*M_PI/180.0);
 
    constAtt_ = 1.0;
    linAtt_   = 0.0;
