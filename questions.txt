@@ -1,0 +1,20 @@
+1.
+
+2. Objet distant, half vector presque constant
+	-> pré-calculé dans le code et passé au shader comme uniform
+
+3. - Normal map dans NF: perturbation des normales pour chaque fragment de texture
+   - Perturbation dans NS: perturbation uniquement pour chaque vertex et interpolation dans le nuanceur de fragmens -> lissage du bruit et perte de détails
+
+4. Normal map définie par rapport à une texture non déformée.
+   - Espace tangent: se ramener localement à une surface non déformée
+   - Espace caméra: transformer les normales, calculs supplémentaires
+
+5.
+- Initialiser VBO avec n points uniformément répartis dans [-1,1] -> (x1,0), (x2,0), (x3,0)... (xn,0)
+- Passer uniform range = (min_x, min_y) au programme
+- Tracer des lignes entre les sommets GL_LINE
+
+- Dans le nuanceur de sommets, pour chaque point, calculer le déplacement en utilisant la formule de la fonction, ex. y=x²
+ et déplacer les sommets en conséquent
+- Colorier les sommets et les lignes dans le NF
