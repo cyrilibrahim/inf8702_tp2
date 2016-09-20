@@ -1,20 +1,45 @@
-1.
+﻿TP2
 
-2. Objet distant, half vector presque constant
-	-> pré-calculé dans le code et passé au shader comme uniform
+Bassam Jabbour 1740835
+Cyril Ibrahim 1576956
 
-3. - Normal map dans NF: perturbation des normales pour chaque fragment de texture
-   - Perturbation dans NS: perturbation uniquement pour chaque vertex et interpolation dans le nuanceur de fragmens -> lissage du bruit et perte de détails
 
-4. Normal map définie par rapport à une texture non déformée.
-   - Espace tangent: se ramener localement à une surface non déformée
-   - Espace caméra: transformer les normales, calculs supplémentaires
+1.  Pourquoi est-ce que nous semblons avoir deux niveaux de magnification et minification des textures avant même d'avoir construit des mipmaps?
 
-5.
-- Initialiser VBO avec n points uniformément répartis dans [-1,1] -> (x1,0), (x2,0), (x3,0)... (xn,0)
-- Passer uniform range = (min_x, min_y) au programme
-- Tracer des lignes entre les sommets GL_LINE
+N et M modifient (en boucle) CVar::minFilter et CVar::magFilter, respectivement. Ces valeurs déterminent le type d'interpolation de la texture dans CGazon::appliquerTextures(). 0 et 1 correspondent à GL_NEAREST (interpolation de plus proche voisin) et GL_LINEAR (interpolation linéaire) dans CCst::mapFilters, qui utilisent la texture originale et sont donc disponibles sans la génération de mipmaps. Les 4 autres modes de minification (GL_*_MIPMAP_*) nécessitent par contre la génération préalable des mipmaps.
 
-- Dans le nuanceur de sommets, pour chaque point, calculer le déplacement en utilisant la formule de la fonction, ex. y=x²
- et déplacer les sommets en conséquent
-- Colorier les sommets et les lignes dans le NF
+
+2. Nous vous avons demandé de calculer l'ajout spéculaire de modèle de Blinn-Phong. Dans quelles circonstances est-ce que ce modèle est avantageux?
+
+Pour les objets distants, la position des sommets varie relativement peu, et par conséquent la direction des vecteurs lumière et caméra aussi. On peut alors considérer que le demi-vecteur est constant, on le calcule dans le programme et on le passe comme "uniform" aux shaders. On évite ainsi de le recalculer pour chaque fragment (ou sommet), d'où un gain en performance.
+
+
+3. Quel aurait été l’effet visuel de perturber les normales pour le bruit de Perlin dans le nuanceur de sommets ? Pourquoi ?
+
+Dans notre cas (normal map dans le nuanceur de fragment) la perturbation des normales est appliquée pour chaque fragment pour obtenir un niveau de détail réaliste du bruit de Perlin. Si par contre on introduit la perturbation dans le nuanceur de sommet, on modifie la normale uniquement pour les sommets du modèle, qui est ensuite interpolée pour chaque fragment. On obtiendrait alors un lissage du bruit et éventuellement l'introduction d'artéfacts.
+
+
+4. Pourquoi utiliser l’espace tangent ?
+
+D'une part, les calculs en espace tangent sont plus intuitifs et permettent d'exprimer simplement les perturbations de la normale par rapport à la texture non déformée. D'autre part, en espace tangent on calcule les coordonnées des demi-vecteurs uniquement au niveau des sommets, et ces vecteurs sont ensuite automatiquement interpolés dans le nuanceur de fragment avec une précision raisonnable (petites perturbations). En coordonnées caméra par contre, il faudrait transformer chaque perturbation de normale pour chaque fragment, dans le nuanceur de fragments.
+
+
+5. Comment pourriez-vous visualiser n’importe quelle fonction 2D d’un domaine connu et limité avec un programme de nuanceurs en vous basant sur ce que vous avez accompli dans ce TP ? Énumérez les étapes. 
+
+-  Dans le code C++:
+ - Initialiser VBA
+ - Initialiser un VBO avec n points uniformément répartis dans [-1,1]x0 : (x1,0), (x2,0), (x3,0)... (xn,0)
+ - Initialiser IBO pour réutiliser les sommets
+ - Compiler et initialiser les shaders
+ - Passer uniform scale_y, scale_x, translate_x aux shaders (scale_x = (max_x - min_x)/2, translate_x=(max_x+min_x)/2 avec max_x, min_x les bornes du domaine de la fonction), passer le VBO en attribute array
+ - Dans la boucle, tracer des lignes entre les vertex glDrawElements(GL_LINES...)
+
+- Dans le nuanceur de sommets:
+ - transformer les coordonnées x de [-1,1] à [min_x,max_x]: x = scale_x * x + translate_x
+ - calculer le déplacement en utilisant la formule de la fonction 2D y=f(x)
+ - multiplier y *= scale_y
+ - déplacer le sommet à la nouvelle position y 
+
+
+-Dans le nuanceur de fragments:
+ - Colorier les sommets et les lignes en attribuant simplement une couleur au fragment
